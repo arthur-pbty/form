@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Modèle pour les formulaires
+model Form {
+  id          String     @id @default(uuid())
+  title       String
+  description String?
+  fields      String     // JSON stringified des champs du formulaire
+  secretKey   String     @unique // Clé secrète pour accéder aux résultats
+  publicId    String     @unique // ID public pour partager le formulaire
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  responses   Response[]
+}
+
+// Modèle pour les réponses aux formulaires
+model Response {
+  id        String   @id @default(uuid())
+  formId    String
+  form      Form     @relation(fields: [formId], references: [id], onDelete: Cascade)
+  data      String   // JSON stringified des réponses
+  createdAt DateTime @default(now())
+}
