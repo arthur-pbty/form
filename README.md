@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FormCraft
 
-## Getting Started
+FormCraft est une application de creation de formulaires en ligne.
 
-First, run the development server:
+Site en production : [https://form.arthurp.fr](https://form.arthurp.fr)
+
+## A propos
+
+FormCraft permet de :
+
+- creer un formulaire public en quelques secondes
+- partager un lien public
+- consulter les reponses collectees
+- supprimer un formulaire via une cle secrete
+
+Pour decouvrir l'application, visiter [form.arthurp.fr](https://form.arthurp.fr).
+
+## Stack technique
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Prisma
+- SQLite (developpement local)
+
+## Lancer en local
+
+Prerequis :
+
+- Node.js 18+
+- npm
+
+Installation et lancement :
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Application disponible sur [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variables d'environnement
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Le projet utilise une variable Prisma :
 
-## Learn More
+```env
+DATABASE_URL="file:./dev.db"
+```
 
-To learn more about Next.js, take a look at the following resources:
+Le fichier `.env` est ignore par Git.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploiement
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Build de production :
 
-## Deploy on Vercel
+```bash
+npm run build
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Avant publication GitHub :
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- verifier que `.env`, `.vscode/`, `node_modules/`, `.next/` et les bases SQLite locales ne sont pas suivis
+- verifier qu'aucune cle API ou secret n'est commite
+
+## Liens utiles
+
+- Application : [https://form.arthurp.fr](https://form.arthurp.fr)
+- Page d'accueil FormCraft : [https://form.arthurp.fr](https://form.arthurp.fr)
+- Next.js : [https://nextjs.org](https://nextjs.org)
