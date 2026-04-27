@@ -1,0 +1,15 @@
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+node_modules
+.next
+coverage
+npm-debug.log
+yarn-error.log
+*.log
+.env
+data
+prisma/data
+*.db
+*.db-journal
